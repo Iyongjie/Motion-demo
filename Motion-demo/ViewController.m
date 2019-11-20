@@ -50,9 +50,14 @@
     // 减去重力影响得到的值
     double accelerateZ = (accelerometerZ-deviceMotionZ) *9.8;
     if (fabs(accelerateZ) < 0.2) accelerateZ = 0;// 接近静止，展示0
-    NSLog(@"Z轴加速度大小：%fm/s²  重力加速度分量：%fm/s²", accelerometerZ*9.8, deviceMotionZ*9.8);
-    NSLog(@"加速度大小：%fm/s²", accelerateZ);
+    NSLog(@"Z轴加速度大小：%fm/s² ------- 重力加速度在Z轴的分量：%fm/s²", accelerometerZ*9.8, deviceMotionZ*9.8);
+    NSLog(@"水平加速度大小：%fm/s²", accelerateZ);
 }
-
-
+ 
+- (CMMotionManager *)motionManager{
+    if (_motionManager == nil) {
+        _motionManager = [[CMMotionManager alloc] init];
+    }
+    return _motionManager;
+}
 @end
